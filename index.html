@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Pontano+Sans:wght@300..700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fbc2eb, #fad0c4);
+            background-size: 300% 300%;
+            animation: backgroundAnimation 6s ease infinite;
+        font-family: "Playfair Display", serif;  
+            overflow: hidden;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .card {
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 192, 203, 0.8);
+            transform: rotate(45deg);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 192, 203, 0.8);
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -15px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: -15px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(45deg) scale(0.5);
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(45deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .message {
+            font-size: 2rem;
+         color: black;
+             font-family: "Playfair Display", serif;  ;
+            text-transform: uppercase;
+            animation: popIn 1s ease;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .subtext {
+            font-size: 1.3rem;
+            margin-top: 15px;
+            color: #555;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .balloon-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: inset -5px -10px 10px rgba(0, 0, 0, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .balloon::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 20px;
+            background: #888;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0.8);
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="hearts" id="heart-container"></div>
+        <div class="balloon-container" id="balloon-container"></div>
+        <div class="message">Happy Birthday My Buggu  </div>
+        <div class="subtext">Happy Birthday mere babu, my baby, I wish you to always be happy, I love you so much, I love you so much, and I really really love u, and i am alawys with you baby or today i want to give you a good news that in your pre board paper If you have scored 52 in physics or have scored 70 or have scored 90 or 100 in math, this is how you want success in your life.</div>
+    </div>
+
+    <script>
+
+const balloonContainer = document.getElementById('balloon-container');
+
+function createBalloon() {
+    const balloon = document.createElement('div');
+    balloon.classList.add('balloon');
+
+    // Set random position and animation duration
+    balloon.style.left = Math.random() * 100 + '%';
+    balloon.style.animationDuration = Math.random() * 2 + 5 + 's';
+
+    // Set random color
+    const hue = Math.random() * 360;
+    balloon.style.backgroundColor = `hsl(${hue}, 80%, 70%)`;
+
+    balloonContainer.appendChild(balloon);
+
+    // Remove balloon after animation
+    setTimeout(() => {
+        balloon.remove();
+    }, 7000);
+}
+
+setInterval(createBalloon, 300);
+        const heartContainer = document.getElementById('heart-container');
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            heart.style.backgroundColor = `hsl(${Math.random() * 360}, 80%, 80%)`;
+            heartContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+
+        setInterval(createHeart, 400);
+    </script>
+</body>
+</html>
